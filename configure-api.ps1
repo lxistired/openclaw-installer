@@ -177,7 +177,7 @@ function Set-ProviderConfig {
     # 写入 models.providers 配置
     $providersObj = [ordered]@{
         $ProviderKey = [ordered]@{
-            baseURL = $provider.BaseURL
+            baseUrl = $provider.BaseURL
             apiKey  = $ApiKey
             models  = $modelList
         }
@@ -261,7 +261,7 @@ function Set-ProviderConfig {
     }
     $authProfiles["anthropic"] = [ordered]@{
         apiKey  = $ApiKey
-        baseURL = $provider.BaseURL
+        baseUrl = $provider.BaseURL
     }
     $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
     [System.IO.File]::WriteAllText($authProfilesPath, ($authProfiles | ConvertTo-Json -Depth 5), $utf8NoBom)

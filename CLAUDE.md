@@ -63,7 +63,7 @@ User config is stored at `~/.openclaw/openclaw.json` with this structure:
   "models": {
     "providers": {
       "<provider>": {
-        "baseURL": "https://...",
+        "baseUrl": "https://...",
         "apiKey": "sk-...",
         "models": [{ "id": "...", "name": "...", "context": 128000, "maxTokens": 32768 }]
       }

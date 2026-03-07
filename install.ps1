@@ -703,7 +703,7 @@ if ($selectedProvider -and $selectedApiKey) {
     $config["models"] = [ordered]@{
         providers = [ordered]@{
             $providerKey = [ordered]@{
-                baseURL = $selectedProvider.BaseURL
+                baseUrl = $selectedProvider.BaseURL
                 apiKey  = $selectedApiKey
                 models  = $modelList
             }
@@ -809,7 +809,7 @@ if ($selectedApiKey -and $selectedProvider) {
     }
     $authProfiles["anthropic"] = [ordered]@{
         apiKey  = $selectedApiKey
-        baseURL = $selectedProvider.BaseURL
+        baseUrl = $selectedProvider.BaseURL
     }
     $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
     [System.IO.File]::WriteAllText($authProfilesPath, ($authProfiles | ConvertTo-Json -Depth 5), $utf8NoBom)
