@@ -350,7 +350,8 @@ function Test-ApiConnection {
     $bodyBytes = [System.Text.Encoding]::UTF8.GetBytes($bodyJson)
 
     $maxRetries = 3
-    $delays = @(0, 5, 10)
+    $delays = @(0, 10, 20)
+    $lastStatusCode = 0
 
     for ($attempt = 1; $attempt -le $maxRetries; $attempt++) {
         if ($attempt -gt 1) {
@@ -395,6 +396,7 @@ function Test-ApiConnection {
             $statusCode = 0
             if ($webEx.Response) {
                 $statusCode = [int]$webEx.Response.StatusCode
+                $lastStatusCode = $statusCode
                 try {
                     $errReader = New-Object System.IO.StreamReader($webEx.Response.GetResponseStream(), [System.Text.Encoding]::UTF8)
                     $errBody = $errReader.ReadToEnd()
@@ -436,6 +438,15 @@ function Test-ApiConnection {
             Write-Host "  连接异常: $($_.Exception.Message)" -ForegroundColor Red
             if ($attempt -lt $maxRetries) { continue }
         }
+    }
+
+    # 429 = 服务器验证了身份但限流，Key 本身有效
+    if ($lastStatusCode -eq 429) {
+        Write-Host ""
+        Write-Host "  [成功] API Key 验证有效!" -ForegroundColor Green
+        Write-Host "  服务器确认了您的身份，当前触发了频率限制 (429)" -ForegroundColor Yellow
+        Write-Host "  这不影响正常使用，稍后会自动恢复" -ForegroundColor Yellow
+        return
     }
 
     Write-Host ""

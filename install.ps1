@@ -248,7 +248,8 @@ function Test-ApiKey {
     $bodyBytes = [System.Text.Encoding]::UTF8.GetBytes($bodyJson)
 
     $maxRetries = 3
-    $delays = @(0, 5, 10)
+    $delays = @(0, 10, 20)
+    $lastStatusCode = 0
 
     for ($attempt = 1; $attempt -le $maxRetries; $attempt++) {
         if ($attempt -gt 1) {
@@ -291,7 +292,7 @@ function Test-ApiKey {
             $statusCode = 0
             if ($webEx.Response) {
                 $statusCode = [int]$webEx.Response.StatusCode
-                # 读取错误响应体
+                $lastStatusCode = $statusCode
                 try {
                     $errReader = New-Object System.IO.StreamReader($webEx.Response.GetResponseStream(), [System.Text.Encoding]::UTF8)
                     $errBody = $errReader.ReadToEnd()
@@ -329,6 +330,13 @@ function Test-ApiKey {
             Write-Err "API 连接异常: $($_.Exception.Message)"
             if ($attempt -lt $maxRetries) { continue }
         }
+    }
+
+    # 429 = 认证通过但被限流，Key 本身是有效的
+    if ($lastStatusCode -eq 429) {
+        Write-Info "API Key 验证有效（服务器确认了身份），当前被频率限制"
+        Write-Info "这不影响正常使用，启动 OpenClaw 后会自动处理限流"
+        return $true
     }
 
     Write-Err "API 测试在 $maxRetries 次尝试后仍失败"
