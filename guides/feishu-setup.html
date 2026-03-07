@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飞书机器人创建教程 - OpenClaw</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;background:#f5f6fa;color:#1a1a2e;line-height:1.8;padding:20px}
+.container{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#3370ff,#2b5fd9);color:#fff;padding:30px;border-radius:12px;margin-bottom:24px;text-align:center}
+.header h1{font-size:28px;margin-bottom:8px}
+.header p{opacity:.9;font-size:15px}
+.step{background:#fff;border-radius:12px;padding:24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid #3370ff}
+.step-num{display:inline-block;background:#3370ff;color:#fff;width:32px;height:32px;border-radius:50%;text-align:center;line-height:32px;font-weight:700;margin-right:10px;font-size:14px}
+.step h2{display:inline;font-size:18px;vertical-align:middle}
+.step-body{margin-top:14px;padding-left:42px}
+.step-body p{margin-bottom:8px}
+.highlight{background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin:10px 0}
+.highlight::before{content:"⚠️ ";font-size:16px}
+.code{background:#f0f2f5;border-radius:6px;padding:10px 14px;font-family:"Cascadia Code",Consolas,monospace;font-size:14px;margin:8px 0;word-break:break-all}
+.tip{background:#e8f5e9;border:1px solid #4caf50;border-radius:6px;padding:12px 16px;margin:10px 0}
+.tip::before{content:"💡 提示："}
+.warn{background:#fff8e1;border:1px solid #ff9800;border-radius:6px;padding:12px 16px;margin:10px 0}
+.warn::before{content:"⚠️ 注意："}
+.permissions-list{background:#f0f2f5;border-radius:6px;padding:14px 20px;margin:8px 0}
+.permissions-list li{margin:4px 0;font-family:monospace}
+.step-img{width:100%;border-radius:8px;border:1px solid #e0e0e0;margin:12px 0}
+.footer{text-align:center;color:#8c8c8c;padding:20px;font-size:13px}
+a{color:#3370ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.back-btn{display:inline-block;background:#3370ff;color:#fff;padding:10px 24px;border-radius:8px;font-size:15px;margin-top:16px;text-decoration:none;cursor:pointer}
+.back-btn:hover{background:#2b5fd9;text-decoration:none}
+.json-block{position:relative;background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:16px 18px;margin:10px 0;font-family:"Cascadia Code",Consolas,monospace;font-size:13px;line-height:1.6;overflow-x:auto;white-space:pre}
+.json-block .key{color:#9cdcfe}
+.json-block .str{color:#ce9178}
+.copy-btn{position:absolute;top:8px;right:8px;background:#3370ff;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85;transition:opacity .2s}
+.copy-btn:hover{opacity:1}
+.copy-btn.copied{background:#4caf50}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>飞书机器人创建教程</h1>
+  <p>6 步完成飞书 AI 机器人配置 — 包含权限批量导入 &amp; 配对指南</p>
+</div>
+
+<!-- Step 1 -->
+<div class="step">
+  <span class="step-num">1</span>
+  <h2>创建飞书应用 + 添加机器人能力</h2>
+  <div class="step-body">
+    <p>在另一个浏览器窗口中，打开飞书开放平台：</p>
+    <div class="code"><a href="https://open.feishu.cn/app" target="_blank">https://open.feishu.cn/app</a></div>
+    <p>使用你的<strong>飞书账号</strong>登录。如果没有飞书账号，需要先注册一个。</p>
+    <div class="tip">任何飞书账号都可以创建应用。如果登录后提示需要创建团队，直接填一个团队名称即可（比如「我的工作室」），<strong>无需企业认证</strong>。</div>
+
+    <p>登录后，在「我的应用」页面：</p>
+    <p>1. 点击右上角的 <strong>「创建应用」</strong> 按钮</p>
+    <p>2. 选择 <strong>「企业自建应用」</strong>（即使是个人使用也选这个）</p>
+    <img src="images/feishu-create-app.png" alt="创建应用入口" class="step-img">
+    <p>3. 填写应用信息：</p>
+    <ul style="padding-left:20px;margin:8px 0">
+      <li><strong>应用名称</strong>：填写你想要的名字，如「我的AI助手」</li>
+      <li><strong>应用描述</strong>：填写简单描述，如「基于 OpenClaw 的 AI 助手」</li>
+    </ul>
+    <p>4. 点击 <strong>「创建」</strong></p>
+
+    <p>创建完成后，<strong>立即添加机器人能力</strong>：</p>
+    <p>1. 在应用详情页的左侧菜单中，点击 <strong>「应用能力」</strong></p>
+    <p>2. 点击 <strong>「添加应用能力」</strong></p>
+    <p>3. 找到 <strong>「机器人」</strong>，点击 <strong>「添加」</strong></p>
+    <img src="images/feishu-add-bot.png" alt="添加机器人能力" class="step-img">
+    <div class="tip">启用机器人能力后，你的应用就可以在飞书群聊和私聊中被 @ 或直接对话了。</div>
+  </div>
+</div>
+
+<!-- Step 2 -->
+<div class="step">
+  <span class="step-num">2</span>
+  <h2>批量导入权限（一键操作）</h2>
+  <div class="step-body">
+    <p>在左侧菜单中点击 <strong>「权限管理」</strong>，然后点击右上角的 <strong>「批量开通」</strong> 按钮。</p>
+    <p>将下方 JSON 复制并粘贴到输入框中，点击 <strong>「确认」</strong> 即可一次性开通所有权限：</p>
+
+    <div class="json-block" id="permissions-json"><button class="copy-btn" onclick="copyPermissions(this)">一键复制</button>{
+  "<span class="key">scopes</span>": {
+    "<span class="key">tenant</span>": [
+      "<span class="str">contact:user.employee_id:readonly</span>",
+      "<span class="str">contact:user.base:readonly</span>",
+      "<span class="str">im:chat.access_event.bot_p2p_chat:read</span>",
+      "<span class="str">im:chat.members:bot_access</span>",
+      "<span class="str">im:message</span>",
+      "<span class="str">im:message.group_at_msg:readonly</span>",
+      "<span class="str">im:message.p2p_msg:readonly</span>",
+      "<span class="str">im:message:readonly</span>",
+      "<span class="str">im:message:send_as_bot</span>",
+      "<span class="str">im:message.reactions:read</span>",
+      "<span class="str">im:resource</span>"
+    ],
+    "<span class="key">user</span>": [
+      "<span class="str">im:chat.access_event.bot_p2p_chat:read</span>"
+    ]
+  }
+}</div>
+
+    <div class="tip">使用「批量开通」比逐个搜索权限快很多，且不会遗漏。如果你的飞书开放平台版本没有「批量开通」按钮，也可以在搜索框中逐个搜索上述权限名称并开通。</div>
+
+    <details style="margin-top:10px">
+      <summary style="cursor:pointer;color:#3370ff;font-weight:500">权限说明（点击展开）</summary>
+      <ul class="permissions-list" style="margin-top:8px">
+        <li><strong>contact:user.employee_id:readonly</strong> — 读取用户工号</li>
+        <li><strong>contact:user.base:readonly</strong> — 获取用户基本信息（显示发送者姓名）</li>
+        <li><strong>im:chat.access_event.bot_p2p_chat:read</strong> — 接收私聊事件</li>
+        <li><strong>im:chat.members:bot_access</strong> — 获取群成员信息</li>
+        <li><strong>im:message</strong> — 获取与发送消息</li>
+        <li><strong>im:message.group_at_msg:readonly</strong> — 接收群聊 @机器人的消息</li>
+        <li><strong>im:message.p2p_msg:readonly</strong> — 接收用户私聊消息</li>
+        <li><strong>im:message:readonly</strong> — 读取消息内容</li>
+        <li><strong>im:message:send_as_bot</strong> — 以机器人身份发送消息</li>
+        <li><strong>im:message.reactions:read</strong> — 读取消息表情回复</li>
+        <li><strong>im:resource</strong> — 访问消息中的图片/文件等资源</li>
+      </ul>
+    </details>
+  </div>
+</div>
+
+<!-- Step 3 -->
+<div class="step">
+  <span class="step-num">3</span>
+  <h2>复制 App ID 和 App Secret</h2>
+  <div class="step-body">
+    <p>在左侧菜单点击 <strong>「凭证与基础信息」</strong>，可以看到：</p>
+    <div class="code">
+      App ID：cli_xxxxxxxxxxxxxxxx<br>
+      App Secret：xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    </div>
+    <div class="highlight">
+      <strong>请立即复制并保存这两个值！</strong>稍后需要粘贴到安装程序中。
+    </div>
+    <p>点击 App Secret 旁边的「显示」按钮查看完整密钥，然后点击「复制」。</p>
+    <img src="images/feishu-credentials.png" alt="App ID 和 App Secret" class="step-img">
+  </div>
+</div>
+
+<!-- Step 4 -->
+<div class="step">
+  <span class="step-num">4</span>
+  <h2>配置事件订阅（WebSocket + 接收消息）</h2>
+  <div class="step-body">
+    <p>这是<strong>最关键的一步</strong>——不配置事件订阅，机器人将无法接收任何消息！</p>
+    <p>在左侧菜单中点击 <strong>「事件与回调」</strong>：</p>
+
+    <p><strong>第一步：选择接收方式</strong></p>
+    <p>1. 在「事件配置」页面，点击订阅方式旁的 <strong>「编辑」</strong></p>
+    <p>2. 选择 <strong>「使用长连接接收事件」</strong>（即 WebSocket 模式）</p>
+    <p>3. 点击 <strong>「保存」</strong></p>
+    <div class="tip">选择「长连接」模式无需公网 IP 和域名，OpenClaw 会通过 WebSocket 主动连接飞书服务器。</div>
+
+    <p><strong>第二步：添加事件</strong></p>
+    <p>1. 点击 <strong>「添加事件」</strong> 按钮</p>
+    <p>2. 搜索 <strong>im.message.receive_v1</strong></p>
+    <p>3. 找到 <strong>「接收消息」</strong> 事件，点击添加</p>
+    <p>4. 点击 <strong>「保存」</strong></p>
+    <div class="highlight">
+      <strong>必须添加 im.message.receive_v1 事件！</strong>没有这个事件订阅，机器人虽然在线但不会响应任何消息。
+    </div>
+  </div>
+</div>
+
+<!-- Step 5 -->
+<div class="step">
+  <span class="step-num">5</span>
+  <h2>发布应用</h2>
+  <div class="step-body">
+    <p>配置完权限和事件后，需要发布应用才能生效：</p>
+    <p>1. 点击左侧菜单的 <strong>「版本管理与发布」</strong></p>
+    <p>2. 点击 <strong>「创建版本」</strong></p>
+    <p>3. 填写版本号（如 1.0.0）和更新说明</p>
+    <p>4. 设置可用范围（建议选择「全部成员」或指定人员）</p>
+    <p>5. 点击 <strong>「提交审核」</strong></p>
+    <img src="images/feishu-publish.png" alt="版本发布" class="step-img">
+    <div class="warn">提交后需要<strong>团队管理员审批</strong>。如果你自己就是管理员（个人创建的团队默认就是），可以直接在飞书管理后台审批通过。</div>
+    <div class="tip">个人创建的团队，你自己就是管理员，打开飞书 →「管理后台」→「应用审核」直接通过即可。</div>
+  </div>
+</div>
+
+<!-- Step 6 -->
+<div class="step" style="border-left-color:#4caf50">
+  <span class="step-num" style="background:#4caf50">6</span>
+  <h2>配对（Pairing）— 首次连接必须</h2>
+  <div class="step-body">
+    <p>应用发布并审批通过后，还需要完成一次<strong>设备配对</strong>才能让机器人响应消息：</p>
+
+    <p><strong>操作步骤：</strong></p>
+    <p>1. 回到安装程序窗口，完成配置后启动 OpenClaw：</p>
+    <div class="code">openclaw gateway</div>
+
+    <p>2. 在飞书中找到你的机器人（搜索你设置的机器人名称），<strong>发送一条任意消息</strong></p>
+
+    <p>3. 机器人会回复一个 <strong>6 位数的配对码 (Pairing Code)</strong></p>
+
+    <p>4. 在终端中运行配对命令：</p>
+    <div class="code">openclaw pairing approve feishu &lt;配对码&gt;</div>
+    <p>例如：<code>openclaw pairing approve feishu 123456</code></p>
+
+    <p>5. 配对成功后，再次发送消息，机器人就会正常响应了！</p>
+
+    <div class="highlight">
+      <strong>配对只需要做一次！</strong>配对成功后的信息会被保存，后续重启 gateway 不需要重新配对。
+    </div>
+    <div class="tip">也可以通过「配置飞书.bat → 选项 5」完成配对操作。</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="step" style="border-left-color:#ff9800">
+  <h2 style="margin-left:0">❓ 常见问题</h2>
+  <div class="step-body" style="padding-left:0">
+    <p><strong>Q: 找不到「创建应用」按钮？</strong></p>
+    <p>A: 登录飞书开放平台后，如果还没有团队，系统会先引导你创建一个团队。随便填个团队名称（如「我的工作室」）即可，不需要企业认证。创建完团队后就能看到「创建应用」按钮了。</p>
+    <br>
+    <p><strong>Q: 没有「批量开通」按钮怎么办？</strong></p>
+    <p>A: 部分飞书开放平台版本可能没有批量导入功能。此时需要在「权限管理」→「API 权限」标签页下，逐个搜索权限名称并开通。展开「消息与群组」和「通讯录」分类可以更快找到。</p>
+    <br>
+    <p><strong>Q: 审批一直没通过？</strong></p>
+    <p>A: 如果是个人创建的团队，你自己就是管理员，打开飞书 →「管理后台」→「应用审核」直接通过即可。</p>
+    <br>
+    <p><strong>Q: 机器人添加到群后没反应？</strong></p>
+    <p>A: 请逐项排查：</p>
+    <ol style="padding-left:20px;margin:8px 0">
+      <li>确认事件订阅方式选择了<strong>「长连接」(WebSocket)</strong>（步骤 4）</li>
+      <li>确认已添加 <code>im.message.receive_v1</code> 事件（步骤 4）</li>
+      <li>确认所有权限已开通（步骤 2）</li>
+      <li>确认应用已审批通过（步骤 5）</li>
+      <li>确认已完成<strong>设备配对 Pairing</strong>（步骤 6）</li>
+      <li>确认 OpenClaw Gateway 正在运行（<code>openclaw gateway</code>）</li>
+    </ol>
+    <br>
+    <p><strong>Q: WebSocket 连接不上 / gateway 启动后没有收到消息？</strong></p>
+    <p>A: 常见原因：</p>
+    <ol style="padding-left:20px;margin:8px 0">
+      <li>未选择「长连接」方式 — 请在「事件与回调」中确认订阅方式为 WebSocket</li>
+      <li>未添加 im.message.receive_v1 事件 — 必须添加此事件才能接收消息</li>
+      <li>未完成配对 — 首次使用必须完成 Pairing（步骤 6）</li>
+      <li>网络问题 — 运行 <code>配置飞书.bat → 选项 3</code> 进行全面诊断</li>
+    </ol>
+    <br>
+    <p><strong>Q: 什么是 Pairing（配对）？</strong></p>
+    <p>A: Pairing 是 OpenClaw 的安全机制，用于将飞书机器人与本地 OpenClaw 实例绑定。首次连接时，机器人会发送一个 6 位配对码，你需要在终端中确认配对。这确保了只有授权的设备可以控制机器人。配对只需做一次，信息会持久化保存。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>OpenClaw 一键安装包 — 飞书机器人创建教程</p>
+  <p>官方文档：<a href="https://docs.openclaw.ai/channels/feishu" target="_blank">docs.openclaw.ai/channels/feishu</a></p>
+</div>
+
+</div>
+
+<script>
+function copyPermissions(btn) {
+  var json = '{\n  "scopes": {\n    "tenant": [\n      "contact:user.employee_id:readonly",\n      "contact:user.base:readonly",\n      "im:chat.access_event.bot_p2p_chat:read",\n      "im:chat.members:bot_access",\n      "im:message",\n      "im:message.group_at_msg:readonly",\n      "im:message.p2p_msg:readonly",\n      "im:message:readonly",\n      "im:message:send_as_bot",\n      "im:message.reactions:read",\n      "im:resource"\n    ],\n    "user": [\n      "im:chat.access_event.bot_p2p_chat:read"\n    ]\n  }\n}';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(json).then(function() {
+      btn.textContent = '已复制!';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.textContent = '一键复制'; btn.classList.remove('copied'); }, 2000);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = json;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '已复制!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = '一键复制'; btn.classList.remove('copied'); }, 2000);
+  }
+}
+</script>
+</body>
+</html>

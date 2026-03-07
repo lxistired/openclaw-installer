@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "name": "openclaw-installer",
+  "description": "OpenClaw 一键安装包 (Windows 中国版)",
+  "releaseDate": "2026-03-04",
+  "updateCheckUrl": "https://raw.githubusercontent.com/openclaw/openclaw-installer/main/version.json",
+  "releasesUrl": "https://github.com/openclaw/openclaw-installer/releases",
+  "minOpenClawVersion": "1.0.0",
+  "nodeVersion": "22.13.1",
+  "features": [
+    "智谱 GLM / Kimi / MiniMax 三家国产 AI 提供商",
+    "飞书机器人 WebSocket 接入",
+    "双窗口引导式安装体验",
+    "Node.js / Git 国内镜像自动安装"
+  ]
+}

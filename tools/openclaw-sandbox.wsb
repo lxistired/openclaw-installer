@@ -1,0 +1,11 @@
+<Configuration>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\Users\lxxxxxx\Desktop\需求测试\openclaw</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\openclaw</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <MemoryInMB>4096</MemoryInMB>
+  <Networking>Enable</Networking>
+</Configuration>

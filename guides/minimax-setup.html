@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiniMax API Key 获取教程 - OpenClaw</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;background:#f5f6fa;color:#1a1a2e;line-height:1.8;padding:20px}
+.container{max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#00b894,#00cec9);color:#fff;padding:30px;border-radius:12px;margin-bottom:24px;text-align:center}
+.header h1{font-size:28px;margin-bottom:8px}
+.header p{opacity:.9;font-size:15px}
+.step{background:#fff;border-radius:12px;padding:24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid #00b894}
+.step-num{display:inline-block;background:#00b894;color:#fff;width:32px;height:32px;border-radius:50%;text-align:center;line-height:32px;font-weight:700;margin-right:10px;font-size:14px}
+.step h2{display:inline;font-size:18px;vertical-align:middle}
+.step-body{margin-top:14px;padding-left:42px}
+.step-body p{margin-bottom:8px}
+.highlight{background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin:10px 0}
+.highlight::before{content:"⚠️ "}
+.code{background:#f0f2f5;border-radius:6px;padding:10px 14px;font-family:"Cascadia Code",Consolas,monospace;font-size:14px;margin:8px 0;word-break:break-all}
+.tip{background:#e8f5e9;border:1px solid #4caf50;border-radius:6px;padding:12px 16px;margin:10px 0}
+.tip::before{content:"💡 提示："}
+.warn{background:#fff8e1;border:1px solid #ff9800;border-radius:6px;padding:12px 16px;margin:10px 0}
+.warn::before{content:"⚠️ 注意："}
+.model-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.model-table th,.model-table td{border:1px solid #e0e0e0;padding:8px 12px;text-align:left}
+.model-table th{background:#f0f2f5;font-weight:600}
+.model-table tr:nth-child(even){background:#fafafa}
+.badge{display:inline-block;background:#00b894;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;margin-left:6px}
+.step-img{width:100%;border-radius:8px;border:1px solid #e0e0e0;margin:12px 0}
+.footer{text-align:center;color:#8c8c8c;padding:20px;font-size:13px}
+a{color:#00b894;text-decoration:none}
+a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>MiniMax — API Key 获取教程</h1>
+  <p>性价比最高，MiniMax-M2.5 旗舰 230B MoE，SWE-Bench 80.2%</p>
+</div>
+
+<!-- Step 1 -->
+<div class="step">
+  <span class="step-num">1</span>
+  <h2>注册 MiniMax 开放平台账号</h2>
+  <div class="step-body">
+    <p>在另一个浏览器窗口中，打开 MiniMax 开放平台：</p>
+    <div class="code"><a href="https://platform.minimax.io" target="_blank">https://platform.minimax.io</a></div>
+    <p>点击 <strong>「注册」</strong>，使用手机号或邮箱完成注册。</p>
+    <p>已有账号则直接 <strong>「登录」</strong>。</p>
+    <img src="images/minimax-register.png" alt="MiniMax 开放平台注册" class="step-img">
+  </div>
+</div>
+
+<!-- Step 2 -->
+<div class="step">
+  <span class="step-num">2</span>
+  <h2>实名认证（如需）</h2>
+  <div class="step-body">
+    <p>如果系统提示需要认证：</p>
+    <p>1. 进入「用户中心」→「基本信息」</p>
+    <p>2. 完成手机号验证和实名认证</p>
+    <div class="tip">MiniMax 新用户注册通常赠送免费额度，可以先体验再充值。</div>
+  </div>
+</div>
+
+<!-- Step 3 -->
+<div class="step">
+  <span class="step-num">3</span>
+  <h2>进入接口密钥页面</h2>
+  <div class="step-body">
+    <p>登录后，直接打开接口密钥管理页面：</p>
+    <div class="code"><a href="https://platform.minimax.io/user-center/basic-information/interface-key" target="_blank">https://platform.minimax.io/user-center/basic-information/interface-key</a></div>
+    <p>或者通过导航：用户中心 → 基本信息 → <strong>「接口密钥」</strong></p>
+    <img src="images/minimax-apikeys.png" alt="MiniMax 接口密钥页面" class="step-img">
+  </div>
+</div>
+
+<!-- Step 4 -->
+<div class="step">
+  <span class="step-num">4</span>
+  <h2>创建 API Key</h2>
+  <div class="step-body">
+    <p>在接口密钥页面：</p>
+    <p>1. 点击 <strong>「创建新的密钥」</strong></p>
+    <p>2. 输入名称（如「OpenClaw」）</p>
+    <p>3. 点击 <strong>「确认创建」</strong></p>
+    <div class="highlight">
+      <strong>API Key 只显示一次！</strong>创建后请立即复制保存。
+    </div>
+    <img src="images/minimax-create-key.png" alt="创建密钥" class="step-img">
+  </div>
+</div>
+
+<!-- Step 5 -->
+<div class="step">
+  <span class="step-num">5</span>
+  <h2>复制 API Key</h2>
+  <div class="step-body">
+    <p>创建成功后，点击 <strong>「复制」</strong> 按钮。</p>
+    <p>MiniMax API Key 格式类似：</p>
+    <div class="code">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...</div>
+    <img src="images/minimax-copy-key.png" alt="复制密钥" class="step-img">
+    <div class="tip">MiniMax 的 API Key 通常是一段较长的 JWT 格式字符串，请完整复制。</div>
+  </div>
+</div>
+
+<!-- Step 6 -->
+<div class="step" style="border-left-color:#4caf50">
+  <span class="step-num" style="background:#4caf50">6</span>
+  <h2>回到安装程序</h2>
+  <div class="step-body">
+    <p>复制好 API Key 后：</p>
+    <p>1. <strong>切换回安装程序窗口</strong>（命令行黑色窗口）</p>
+    <p>2. 在提示处<strong>粘贴 API Key</strong>（右键粘贴或 Ctrl+V）</p>
+    <p>3. 按 Enter 确认</p>
+    <p>安装程序会自动测试 API 连接是否正常。</p>
+  </div>
+</div>
+
+<!-- Models -->
+<div class="step" style="border-left-color:#00cec9">
+  <h2 style="margin-left:0">📋 MiniMax 可用模型</h2>
+  <div class="step-body" style="padding-left:0;margin-top:14px">
+    <table class="model-table">
+      <tr><th>模型</th><th>特点</th><th>上下文</th><th>价格</th></tr>
+      <tr><td><strong>MiniMax-M2.5</strong></td><td>旗舰 230B MoE，10B 激活</td><td>204K</td><td>$0.15/M input</td></tr>
+      <tr><td><strong>MiniMax-M2.5-highspeed</strong></td><td>高速版，~100 tps</td><td>204K</td><td>$0.15/M input</td></tr>
+      <tr><td><strong>MiniMax-M2.1</strong></td><td>编程增强模型</td><td>204K</td><td>付费</td></tr>
+      <tr><td><strong>MiniMax-M2.1-highspeed</strong></td><td>编程高速版</td><td>204K</td><td>付费</td></tr>
+    </table>
+    <div class="tip">MiniMax 是三家中<strong>价格最低</strong>的：$0.15/M input，$1.20/M output，适合大量使用。</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="step" style="border-left-color:#ff9800">
+  <h2 style="margin-left:0">❓ 常见问题</h2>
+  <div class="step-body" style="padding-left:0">
+    <p><strong>Q: API Key 丢失了怎么办？</strong></p>
+    <p>A: API Key 只在创建时显示一次。请在密钥管理页面删除旧 Key 后重新创建。</p>
+    <br>
+    <p><strong>Q: highspeed 模型和普通模型有什么区别？</strong></p>
+    <p>A: highspeed 模型输出速度更快（约 100 tokens/秒），效果基本一致，适合对响应速度有要求的场景。</p>
+    <br>
+    <p><strong>Q: SWE-Bench 80.2% 是什么意思？</strong></p>
+    <p>A: SWE-Bench 是代码编程能力的权威评测。80.2% 表示 MiniMax 在编程任务上表现非常出色。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>OpenClaw 一键安装包 — MiniMax API Key 获取教程</p>
+  <p>MiniMax 开放平台：<a href="https://platform.minimax.io" target="_blank">platform.minimax.io</a></p>
+</div>
+
+</div>
+</body>
+</html>

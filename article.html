@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw 一键安装包 — 开源 AI 助手，国内直连，飞书可用</title>
+</head>
+<body style="margin:0; padding:0; background:#f5f5f5; font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif; font-size:16px; color:#333; line-height:1.8;">
+
+<section style="max-width:680px; margin:0 auto; background:#fff; padding:32px 24px 48px;">
+
+<!-- 标题 -->
+<h1 style="font-size:24px; font-weight:700; color:#1a1a1a; text-align:center; margin:0 0 8px; line-height:1.4;">OpenClaw — 开源 AI 助手一键安装包</h1>
+<p style="text-align:center; color:#888; font-size:14px; margin:0 0 32px; padding-bottom:24px; border-bottom:1px solid #eee;">三大国产 AI 模型 + 飞书机器人 ｜ 解压双击即可安装</p>
+
+<!-- 导语 -->
+<section style="background:#f8f9fa; border-left:4px solid #1a73e8; padding:16px 20px; margin-bottom:32px; border-radius:0 8px 8px 0; font-size:15px; color:#555;">
+OpenClaw 是一个开源的 AI 助手框架，能够接入国产大模型并作为飞书机器人使用。但国内用户在安装时面临网络限制和环境配置的双重门槛。本文提供一个开箱即用的一键安装方案——解压后双击即可完成全部安装，支持智谱 GLM、Kimi、MiniMax 三大国产 AI 提供商，还能一步配好飞书机器人。
+</section>
+
+<!-- 痛点 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">国内用户面临的四个障碍</h2>
+
+<section style="background:#fff; border:1px solid #e8e8e8; border-radius:8px; padding:20px; margin-bottom:24px;">
+  <section style="display:flex; align-items:flex-start; margin-bottom:16px;">
+    <span style="display:inline-block; width:28px; height:28px; background:#fee; color:#e53935; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">1</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">网络限制</strong> — <span style="color:#666;">OpenClaw 默认连接海外服务器，国内网络无法直连</span></section>
+  </section>
+  <section style="display:flex; align-items:flex-start; margin-bottom:16px;">
+    <span style="display:inline-block; width:28px; height:28px; background:#fee; color:#e53935; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">2</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">环境依赖</strong> — <span style="color:#666;">需要预装 Node.js &ge; 22、Git 并配置 npm，对非开发者而言操作陌生</span></section>
+  </section>
+  <section style="display:flex; align-items:flex-start; margin-bottom:16px;">
+    <span style="display:inline-block; width:28px; height:28px; background:#fee; color:#e53935; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">3</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">API 配置</strong> — <span style="color:#666;">需要注册 AI 平台账号、获取 API Key 并手动设置环境变量，流程繁琐</span></section>
+  </section>
+  <section style="display:flex; align-items:flex-start;">
+    <span style="display:inline-block; width:28px; height:28px; background:#fee; color:#e53935; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">4</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">消息平台</strong> — <span style="color:#666;">国外的 Telegram 等平台国内受限，无法作为日常 AI 入口</span></section>
+  </section>
+</section>
+
+<!-- OpenClaw 是什么 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">OpenClaw 是什么</h2>
+
+<p style="margin-bottom:16px;">OpenClaw 是一个<strong>开源的 AI 助手框架</strong>，通过接入大语言模型，让你在命令行或飞书中直接与 AI 对话、完成各种任务。与传统的 AI 聊天网页不同，OpenClaw 能够<strong>直接操作你的文件和项目</strong>——写代码、处理数据、生成文档，真正做到"AI 帮你干活"。</p>
+<p style="margin-bottom:12px;">它可以帮你完成：</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>代码编写与调试——用自然语言描述需求，AI 直接生成代码</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>数据处理与分析——批量清洗、转换、汇总数据</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>文档生成与处理——自动撰写报告、提取关键信息</p>
+<p style="margin-bottom:16px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>飞书机器人——在群聊或私聊中 @机器人 即可使用 AI</p>
+
+<!-- 三大 AI 提供商 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">三大国产 AI 提供商，任选其一</h2>
+
+<p style="margin-bottom:16px;">一键安装包支持三家国产 AI 提供商，均通过 Anthropic 兼容接口实现国内直连，无需翻墙。安装时可自由选择：</p>
+
+<!-- 智谱 GLM -->
+<section style="border:1px solid #e8e8e8; border-radius:8px; padding:20px; margin-bottom:12px;">
+  <section style="display:flex; align-items:center; margin-bottom:10px;">
+    <span style="display:inline-block; background:#4a6cf7; color:#fff; font-size:13px; font-weight:600; padding:4px 12px; border-radius:12px; margin-right:10px;">推荐</span>
+    <strong style="font-size:17px; color:#1a1a1a;">智谱 GLM</strong>
+  </section>
+  <p style="margin-bottom:6px; color:#555;">旗舰模型 <strong>GLM-5</strong>（744B MoE），国产大模型第一梯队。</p>
+  <p style="margin-bottom:6px; color:#555;">亮点：<strong>glm-4-flash 完全免费</strong>，新手可以零成本体验。</p>
+  <p style="margin-bottom:0; color:#888; font-size:14px;">编程增强模型 glm-4.7 在 SWE-Bench 评测中表现优异。</p>
+</section>
+
+<!-- Kimi -->
+<section style="border:1px solid #e8e8e8; border-radius:8px; padding:20px; margin-bottom:12px;">
+  <section style="display:flex; align-items:center; margin-bottom:10px;">
+    <span style="display:inline-block; background:#6c5ce7; color:#fff; font-size:13px; font-weight:600; padding:4px 12px; border-radius:12px; margin-right:10px;">超长上下文</span>
+    <strong style="font-size:17px; color:#1a1a1a;">Kimi / 月之暗面</strong>
+  </section>
+  <p style="margin-bottom:6px; color:#555;">旗舰模型 <strong>kimi-k2.5</strong>（1T MoE，32B 激活），<strong>256K 超长上下文</strong>。</p>
+  <p style="margin-bottom:0; color:#888; font-size:14px;">适合处理超长文档和大型代码库，价格 $0.60/M input。</p>
+</section>
+
+<!-- MiniMax -->
+<section style="border:1px solid #e8e8e8; border-radius:8px; padding:20px; margin-bottom:24px;">
+  <section style="display:flex; align-items:center; margin-bottom:10px;">
+    <span style="display:inline-block; background:#00b894; color:#fff; font-size:13px; font-weight:600; padding:4px 12px; border-radius:12px; margin-right:10px;">最低价</span>
+    <strong style="font-size:17px; color:#1a1a1a;">MiniMax</strong>
+  </section>
+  <p style="margin-bottom:6px; color:#555;">旗舰模型 <strong>MiniMax-M2.5</strong>（230B MoE），SWE-Bench 80.2%。</p>
+  <p style="margin-bottom:0; color:#888; font-size:14px;">三家中<strong>价格最低</strong>：$0.15/M input，$1.20/M output，适合大量使用。</p>
+</section>
+
+<!-- 飞书机器人 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">飞书机器人，开箱即用</h2>
+
+<p style="margin-bottom:16px;">一键安装包内置飞书机器人配置引导。安装过程中，脚本会<strong>自动打开飞书开放平台教程</strong>，手把手教你创建应用、获取凭证、配置权限。配置完成后，你可以：</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>在飞书群聊中 <strong>@机器人</strong> 提问，AI 即时回复</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>与机器人私聊，随时获取 AI 帮助</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>基于 WebSocket 连接，<strong>无需公网 IP</strong>，家用电脑即可运行</p>
+<p style="margin-bottom:16px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>个人飞书账号即可创建应用，<strong>无需企业认证</strong></p>
+
+<!-- 一键安装方案 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">一键安装方案</h2>
+
+<p style="margin-bottom:16px;">我们将所有依赖打包，做成了一个<strong>一键安装工具</strong>。整个过程只需三步：</p>
+
+<section style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; margin:24px 0;">
+  <span style="display:inline-block; background:#e8f0fe; color:#1a73e8; font-size:14px; font-weight:600; padding:8px 18px; border-radius:20px;">下载解压</span>
+  <span style="color:#bbb; font-size:18px;">&rarr;</span>
+  <span style="display:inline-block; background:#e8f0fe; color:#1a73e8; font-size:14px; font-weight:600; padding:8px 18px; border-radius:20px;">右键管理员运行「一键安装.bat」</span>
+  <span style="color:#bbb; font-size:18px;">&rarr;</span>
+  <span style="display:inline-block; background:#e8f0fe; color:#1a73e8; font-size:14px; font-weight:600; padding:8px 18px; border-radius:20px;">跟着引导走</span>
+</section>
+
+<p style="margin-bottom:12px;">脚本会自动完成以下工作：</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>检测并安装 Node.js &ge; 22 和 Git（国内镜像，无需翻墙）</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>配置 npm 国内镜像源（npmmirror.com）</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>通过 npm 安装 OpenClaw</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>引导选择 AI 提供商并配置 API Key</p>
+<p style="margin-bottom:8px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>引导配置飞书机器人（可跳过）</p>
+<p style="margin-bottom:16px; padding-left:8px;"><span style="color:#1a73e8; font-weight:700; margin-right:6px;">&#10003;</span>自动写入配置文件并启动</p>
+
+<!-- 双窗口引导 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">双窗口引导，小白也能用</h2>
+
+<p style="margin-bottom:16px;">安装过程中的每一步配置（注册 AI 平台、获取 API Key、创建飞书应用），脚本都会<strong>同时打开两个窗口</strong>：</p>
+
+<section style="background:#fff; border:1px solid #e8e8e8; border-radius:8px; padding:20px; margin-bottom:24px;">
+  <section style="display:flex; align-items:flex-start; margin-bottom:16px;">
+    <span style="display:inline-block; width:28px; height:28px; background:#e8f0fe; color:#1a73e8; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">1</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">浏览器窗口 A — 本地图文教程</strong><br><span style="color:#666;">内置详细的截图+文字引导，告诉你每一步该点哪里、填什么</span></section>
+  </section>
+  <section style="display:flex; align-items:flex-start;">
+    <span style="display:inline-block; width:28px; height:28px; background:#e8f0fe; color:#1a73e8; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">2</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">浏览器窗口 B — 对应平台官网</strong><br><span style="color:#666;">直接打开 AI 平台的注册/API Key 页面，对照教程操作即可</span></section>
+  </section>
+</section>
+
+<p style="margin-bottom:16px; color:#555;">你只需要在教程和平台之间切换，照着做就行。完成后回到命令行窗口粘贴 API Key，脚本自动验证并写入配置。</p>
+
+<!-- 六步安装流程 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">六步安装流程</h2>
+
+<section style="margin:20px 0 8px;">
+  <span style="display:inline-block; background:#1a73e8; color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:12px; margin-bottom:8px;">步骤 1/6</span>
+  <span style="display:inline-block; color:#1a1a1a; font-weight:600; font-size:15px; margin-left:8px;">安装 Node.js</span>
+</section>
+<p style="color:#555; margin-bottom:20px; padding-left:4px;">自动检测系统是否已安装 Node.js &ge; 22。未安装则从国内镜像（npmmirror.com）下载安装，全程无需翻墙。</p>
+
+<section style="margin:20px 0 8px;">
+  <span style="display:inline-block; background:#1a73e8; color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:12px; margin-bottom:8px;">步骤 2/6</span>
+  <span style="display:inline-block; color:#1a1a1a; font-weight:600; font-size:15px; margin-left:8px;">安装 Git</span>
+</section>
+<p style="color:#555; margin-bottom:20px; padding-left:4px;">自动检测 Git 是否已安装。未安装则从国内镜像下载安装。</p>
+
+<section style="margin:20px 0 8px;">
+  <span style="display:inline-block; background:#1a73e8; color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:12px; margin-bottom:8px;">步骤 3/6</span>
+  <span style="display:inline-block; color:#1a1a1a; font-weight:600; font-size:15px; margin-left:8px;">安装 OpenClaw</span>
+</section>
+<p style="color:#555; margin-bottom:20px; padding-left:4px;">配置 npm 国内镜像源，然后通过 npm 全局安装 OpenClaw。</p>
+
+<section style="margin:20px 0 8px;">
+  <span style="display:inline-block; background:#1a73e8; color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:12px; margin-bottom:8px;">步骤 4/6</span>
+  <span style="display:inline-block; color:#1a1a1a; font-weight:600; font-size:15px; margin-left:8px;">配置 AI 提供商</span>
+</section>
+<p style="color:#555; margin-bottom:20px; padding-left:4px;">选择智谱 GLM、Kimi 或 MiniMax，脚本自动打开图文教程和平台注册页。获取 API Key 后粘贴到命令行，脚本自动验证连接并写入配置。</p>
+
+<section style="margin:20px 0 8px;">
+  <span style="display:inline-block; background:#1a73e8; color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:12px; margin-bottom:8px;">步骤 5/6</span>
+  <span style="display:inline-block; color:#1a1a1a; font-weight:600; font-size:15px; margin-left:8px;">配置飞书机器人（可选）</span>
+</section>
+<p style="color:#555; margin-bottom:20px; padding-left:4px;">选择是否启用飞书机器人。启用则自动打开飞书教程，引导创建应用、获取 App ID/Secret、配置权限。个人飞书账号即可操作，无需企业认证。</p>
+
+<section style="margin:20px 0 8px;">
+  <span style="display:inline-block; background:#1a73e8; color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:12px; margin-bottom:8px;">步骤 6/6</span>
+  <span style="display:inline-block; color:#1a1a1a; font-weight:600; font-size:15px; margin-left:8px;">生成配置并启动</span>
+</section>
+<p style="color:#555; margin-bottom:24px; padding-left:4px;">脚本自动将所有配置写入本地文件，创建桌面快捷方式，并启动 OpenClaw。</p>
+
+<!-- 附赠工具 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">安装后还有这些工具</h2>
+
+<p style="margin-bottom:16px;">安装包还附赠三个管理工具，双击即可运行：</p>
+
+<section style="background:#fff; border:1px solid #e8e8e8; border-radius:8px; padding:20px; margin-bottom:24px;">
+  <section style="display:flex; align-items:flex-start; margin-bottom:16px;">
+    <span style="display:inline-block; width:28px; height:28px; background:#e8f0fe; color:#1a73e8; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">1</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">配置API.bat</strong> — <span style="color:#666;">随时切换 AI 提供商、更换 API Key、测试连接、检查更新</span></section>
+  </section>
+  <section style="display:flex; align-items:flex-start; margin-bottom:16px;">
+    <span style="display:inline-block; width:28px; height:28px; background:#e8f0fe; color:#1a73e8; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">2</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">配置飞书.bat</strong> — <span style="color:#666;">管理飞书机器人凭证、测试连接、重新配置</span></section>
+  </section>
+  <section style="display:flex; align-items:flex-start;">
+    <span style="display:inline-block; width:28px; height:28px; background:#e8f0fe; color:#1a73e8; border-radius:50%; text-align:center; line-height:28px; font-size:14px; font-weight:700; margin-right:12px; flex-shrink:0;">3</span>
+    <section style="flex:1;"><strong style="color:#1a1a1a;">一键卸载.bat</strong> — <span style="color:#666;">完整卸载 OpenClaw 及相关配置，可选保留 Node.js/Git</span></section>
+  </section>
+</section>
+
+<!-- 下载 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">下载</h2>
+
+<section style="background:#f0f6ff; border:1px solid #c5d9f7; border-radius:8px; padding:20px; margin-bottom:24px;">
+  <p style="margin-bottom:8px;">解压后右键以管理员身份运行「一键安装.bat」即可。</p>
+  <p style="margin-bottom:8px;">百度网盘：【请填入百度网盘链接】</p>
+  <p style="margin-bottom:0;">GitHub 开源地址：【请填入 GitHub 地址】</p>
+</section>
+
+<!-- 常见问题 -->
+<h2 style="font-size:20px; font-weight:700; color:#1a1a1a; margin:36px 0 16px; padding-left:12px; border-left:4px solid #1a73e8; line-height:1.4;">常见问题</h2>
+
+<section style="border-bottom:1px solid #eee; padding:16px 0;">
+  <p style="font-weight:600; color:#1a1a1a; margin-bottom:6px;"><span style="display:inline-block; background:#1a73e8; color:#fff; width:22px; height:22px; border-radius:4px; text-align:center; line-height:22px; font-size:13px; font-weight:700; margin-right:8px;">Q</span>使用费用如何？</p>
+  <p style="color:#555; padding-left:30px; margin-bottom:0;">智谱提供免费额度，其中 <strong>glm-4-flash 模型完全免费</strong>。MiniMax 价格最低（$0.15/M input），适合大量使用。Kimi 以 256K 超长上下文见长。安装时可根据需求自由选择。</p>
+</section>
+
+<section style="border-bottom:1px solid #eee; padding:16px 0;">
+  <p style="font-weight:600; color:#1a1a1a; margin-bottom:6px;"><span style="display:inline-block; background:#1a73e8; color:#fff; width:22px; height:22px; border-radius:4px; text-align:center; line-height:22px; font-size:13px; font-weight:700; margin-right:8px;">Q</span>安全性如何保证？</p>
+  <p style="color:#555; padding-left:30px; margin-bottom:0;">安装脚本<strong>完全开源</strong>，所有代码可在 GitHub 查看。脚本仅安装官方依赖并写入本地配置文件，不收集任何用户信息，API Key 仅保存在你自己的电脑上。</p>
+</section>
+
+<section style="border-bottom:1px solid #eee; padding:16px 0;">
+  <p style="font-weight:600; color:#1a1a1a; margin-bottom:6px;"><span style="display:inline-block; background:#1a73e8; color:#fff; width:22px; height:22px; border-radius:4px; text-align:center; line-height:22px; font-size:13px; font-weight:700; margin-right:8px;">Q</span>飞书机器人需要企业账号吗？</p>
+  <p style="color:#555; padding-left:30px; margin-bottom:0;"><strong>不需要。</strong>个人飞书账号登录开放平台后，如果还没有团队，系统会引导你创建一个——随便填个团队名称（如「我的工作室」）即可，无需企业认证。</p>
+</section>
+
+<section style="border-bottom:1px solid #eee; padding:16px 0;">
+  <p style="font-weight:600; color:#1a1a1a; margin-bottom:6px;"><span style="display:inline-block; background:#1a73e8; color:#fff; width:22px; height:22px; border-radius:4px; text-align:center; line-height:22px; font-size:13px; font-weight:700; margin-right:8px;">Q</span>安装后可以切换 AI 提供商吗？</p>
+  <p style="color:#555; padding-left:30px; margin-bottom:0;">可以。运行「配置API.bat」即可随时切换提供商、更换模型、更新 API Key。</p>
+</section>
+
+<section style="padding:16px 0;">
+  <p style="font-weight:600; color:#1a1a1a; margin-bottom:6px;"><span style="display:inline-block; background:#1a73e8; color:#fff; width:22px; height:22px; border-radius:4px; text-align:center; line-height:22px; font-size:13px; font-weight:700; margin-right:8px;">Q</span>系统有什么要求？</p>
+  <p style="color:#555; padding-left:30px; margin-bottom:0;"><strong>Windows 10 及以上</strong>即可。安装过程需要管理员权限（右键「以管理员身份运行」）。安装完成后正常使用无需管理员权限。</p>
+</section>
+
+<!-- 底部 -->
+<p style="text-align:center; color:#bbb; font-size:13px; margin-top:40px; padding-top:24px; border-top:1px solid #eee;">
+OpenClaw 一键安装包 — 开源 AI 助手，国内直连，飞书可用
+</p>
+
+</section>
+
+</body>
+</html>
