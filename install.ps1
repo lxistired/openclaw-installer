@@ -58,7 +58,7 @@ $PROVIDERS = @{
     }
     "minimax" = @{
         Name     = "MiniMax"
-        BaseURL  = "https://api.minimax.io/anthropic"
+        BaseURL  = "https://api.minimaxi.com/anthropic"
         RegURL   = "https://platform.minimax.io"
         KeyURL   = "https://platform.minimax.io/user-center/basic-information/interface-key"
         Guide    = "minimax-setup.html"
